@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: Novicap Confirming Standard API
+  version: v1
+  description: Novicap working-capital API. Transcribed faithfully from the published API Reference at https://developer.novicap.com/ (operations, paths, methods, parameters, auth scheme and documented HTTP error codes). Request/response property schemas are only partially documented by the provider; bodies are modelled as open objects and MUST NOT be treated as an authoritative field contract. Provider does not publish an OpenAPI document; this is an API Evangelist generation from the public docs.
+  contact:
+    name: Novicap Support
+    email: support@novicap.com
+    url: https://developer.novicap.com/
+servers:
+- url: https://api.novicap.com/v1
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Confirming Standard
+  description: Confirming (reverse factoring) invoices and payment instructions.
+paths:
+  /confirming_standard/invoices:
+    post:
+      tags:
+      - Confirming Standard
+      operationId: addConfirmingInvoices
+      summary: Add confirming invoices
+      parameters:
+      - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceInput'
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '201':
+          $ref: '#/components/responses/Created'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    get:
+      tags:
+      - Confirming Standard
+      operationId: retrieveConfirmingInvoices
+      summary: Retrieve confirming invoices
+      parameters:
+      - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /confirming_standard/invoices/{transaction_id}:
+    delete:
+      tags:
+      - Confirming Standard
+      operationId: deleteConfirmingInvoice
+      summary: Delete a confirming invoice
+      parameters:
+      - $ref: '#/components/parameters/ProductId'
+      - $ref: '#/components/parameters/TransactionId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /confirming_standard/payment_instructions:
+    get:
+      tags:
+      - Confirming Standard
+      operationId: retrieveConfirmingPaymentInstructions
+      summary: Retrieve confirming payment instructions
+      parameters:
+      - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  responses:
+    Forbidden:
+      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
+    Created:
+      description: Resource created (application/json).
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    Unauthorized:
+      description: Unauthorized — missing or invalid API key.
+    Success:
+      description: Successful response (application/json).
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    ServerError:
+      description: Server error (500 / 502 / 503 / 504).
+    BadRequest:
+      description: Bad Request — the request was malformed or invalid.
+    NotFound:
+      description: Not Found — the referenced resource does not exist.
+  parameters:
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
+      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
+      schema:
+        type: string
+    ProductId:
+      name: product_id
+      in: query
+      required: true
+      description: Identifier of the Novicap product the request operates against.
+      schema:
+        type: integer
+  schemas:
+    InvoiceInput:
+      type: object
+      description: Invoice payload. Documented deduplication key is (supplier, reference). Remaining fields are only partially documented by the provider.
+      additionalProperties: true
+      properties:
+        supplier:
+          type: string
+          description: Supplier reference the invoice belongs to.
+        reference:
+          type: string
+          description: Invoice reference used for deduplication.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key issued from the Novicap user profile, sent as "Authorization: Bearer {api_key}". The key may alternatively be supplied as an "api_key" field in the JSON payload. OAuth 2.0 is available on request. A "product_id" is required on every request.'
+x-provenance:
+  generated: '2026-07-20'
+  method: generated
+  source: https://developer.novicap.com/
