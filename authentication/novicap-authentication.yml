@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.novicap.com/#authentication
+docs: https://developer.novicap.com/#authentication
+summary:
+  types: [http, oauth2]
+  http_schemes: [bearer]
+  oauth2_flows: []
+  api_key_in: [header, body]
+  product_scoped: true
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    description: >-
+      API key generated from the Novicap user profile, sent as
+      "Authorization: Bearer {api_key}". The key may alternatively be provided as
+      an "api_key" field inside the JSON request payload.
+    sources: [openapi/novicap-openapi.yml]
+  - name: oauth2
+    type: oauth2
+    description: OAuth 2.0 is documented as available on request; scopes/flows are not published.
+    available_on_request: true
+requirements:
+  - Every request must include a product_id (query parameter or JSON payload field).
+  - Endpoint availability depends on account configuration; a 403 means the endpoint is not enabled for the account (contact support@novicap.com).
+notes: >-
+  Derived from the published API Reference. No OpenAPI is published by the
+  provider; the securityScheme is transcribed from the docs.

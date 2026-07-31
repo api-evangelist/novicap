@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: https://novicap.com/.well-known/security.txt
+hosts:
+  - host: https://novicap.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: novicap-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://developer.novicap.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+      - path: /.well-known/openid-configuration
+        status: 404
+notes: >-
+  security.txt is a genuine RFC 9116 document (Content-Type text/plain; a random
+  /.well-known path returns 404, so the 200 is not an SPA catch-all). No OIDC /
+  OAuth authorization-server discovery, api-catalog or ai-plugin.json published.

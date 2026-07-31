@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/novicap-openapi.yml
+skills:
+  - file: novicap-submit-and-fund-invoices.md
+    name: Submit dynamic-discounting invoices and create a payment instruction
+    api: openapi/novicap-openapi.yml
+    operations:
+      - addDynamicDiscountingSuppliers
+      - addDynamicDiscountingInvoices
+      - retrieveDynamicDiscountingInvoices
+      - createDynamicDiscountingPaymentInstruction
+  - file: novicap-confirming-invoices.md
+    name: Submit and reconcile confirming (reverse factoring) invoices
+    api: openapi/novicap-openapi.yml
+    operations:
+      - addConfirmingInvoices
+      - retrieveConfirmingInvoices
+      - retrieveConfirmingPaymentInstructions

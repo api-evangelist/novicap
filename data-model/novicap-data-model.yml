@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/novicap-openapi.yml
+notes: >-
+  Entity graph derived from the documented Novicap API operations and resource
+  id prefixes. Field-level relationships are partially documented; the
+  (supplier, reference) pair is the documented invoice deduplication key.
+entities:
+  - name: product
+    id_field: product_id
+    notes: Required scope on every request; determines which endpoints are available.
+  - name: supplier
+    domain: dynamic_discounting
+  - name: invoice
+    id_prefixes: [DDI, I]
+    domains: [dynamic_discounting, confirming_standard]
+  - name: payment_instruction
+    id_prefixes: [DDPI]
+    domains: [dynamic_discounting, confirming_standard]
+  - name: payment_adjustment
+    domain: dynamic_discounting
+relationships:
+  - from: invoice
+    to: supplier
+    type: belongs_to
+    via: supplier
+  - from: invoice
+    to: product
+    type: belongs_to
+    via: product_id
+  - from: payment_instruction
+    to: invoice
+    type: has_many
+    notes: A payment instruction settles one or more invoices; once an invoice is part of a payment instruction it is no longer updatable by re-post.
+  - from: payment_adjustment
+    to: payment_instruction
+    type: belongs_to
+  - from: supplier
+    to: product
+    type: belongs_to
+    via: product_id

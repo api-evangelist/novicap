@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.novicap.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.novicap.com/v1
+  docs: https://developer.novicap.com/#introduction
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No deprecation policy or Sunset/Deprecation header support is documented.
+sla:
+  url: null
+status_page:
+  confirmed: false
+  observed_hosts:
+    - {host: https://status.novicap.com/, http_status: 301}
+    - {host: https://novicap.statuspage.io/, http_status: 302}
+  notes: >-
+    A "status" subdomain and an Atlassian statuspage.io host both resolve
+    (redirects), strongly suggesting a live status page, but live page content
+    could not be confirmed during this pass. No scored StatusPage pointer is
+    emitted until the page is verified.
+deprecated_operations: []

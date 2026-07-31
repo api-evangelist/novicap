@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.novicap.com/
+authentication:
+  style: bearer-api-key
+  header: 'Authorization: Bearer {api_key}'
+  alt: api_key field in JSON body
+  product_scope: product_id required on every request
+  ref: authentication/novicap-authentication.yml
+versioning:
+  style: uri-path
+  current: v1
+  base_url: https://api.novicap.com/v1
+content_type:
+  request: application/json
+  response: application/json
+idempotency:
+  supported: false
+  dedup_behavior: >-
+    Not a formal idempotency-key contract. Documented behavior only: posting an
+    invoice whose (supplier, reference) matches an existing invoice that is not
+    yet part of a payment instruction updates that invoice instead of creating a
+    duplicate.
+  header: null
+pagination:
+  supported: false
+  notes: No pagination parameters or paging metadata are documented.
+rate_limiting:
+  documented: false
+error_envelope:
+  format: http-status-codes
+  documented_codes: [400, 401, 403, 404, 500, 502, 503, 504]
+  ref: errors/novicap-problem-types.yml
+  notes: >-
+    Error response body shape is not documented; only HTTP status codes are
+    described. Not RFC 9457 (no application/problem+json).
+tracing:
+  request_id_header: null
+resource_ids:
+  style: prefixed
+  examples:
+    dynamic_discounting_invoice: DDI-ABCD
+    dynamic_discounting_payment_instruction: DDPI-ABCD
+    confirming_invoice: I-ABCD

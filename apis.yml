@@ -1,23 +1,78 @@
 aid: novicap
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/novicap.png
 name: Novicap
-description: 'Novicap is a company surfaced as a portfolio company of partech, techstars and added to
-  the API Evangelist network as a stub for enrichment. Sector: Financial Services. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Novicap is a Spanish working-capital and supply-chain-finance fintech that
+  helps companies optimize their circulating capital. Its REST API (base URL
+  https://api.novicap.com/v1) lets partners programmatically register suppliers,
+  submit and manage invoices, and create payment instructions and adjustments
+  across two products: Dynamic Discounting and Confirming Standard (reverse
+  factoring). The API uses Bearer API-key authentication with a required
+  product_id scope, JSON payloads, and URI-path versioning, and is documented in
+  a public developer reference. Novicap is backed by Partech and Techstars.
 url: https://raw.githubusercontent.com/api-evangelist/novicap/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - partech
 - techstars
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: portfolio-lead-with-public-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Financial Services
-apis: []
+- Fintech
+- Working Capital
+- Invoice Finance
+- Supply Chain Finance
+- Dynamic Discounting
+- Confirming
+- Reverse Factoring
+- Spain
+apis:
+- aid: novicap:novicap-confirming-standard-api
+  name: Novicap Confirming Standard API
+  description: Confirming (reverse factoring) invoices and payment instructions.
+  humanURL: https://developer.novicap.com/
+  baseURL: https://api.novicap.com/v1
+  tags:
+  - Confirming Standard
+  properties:
+  - type: OpenAPI
+    url: openapi/novicap-confirming-standard-api-openapi.yml
+  - type: APIReference
+    url: https://developer.novicap.com/
+  - type: Documentation
+    url: https://developer.novicap.com/
+- aid: novicap:novicap-dynamic-discounting-api
+  name: Novicap Dynamic Discounting API
+  description: Dynamic discounting suppliers, invoices, payment instructions and adjustments.
+  humanURL: https://developer.novicap.com/
+  baseURL: https://api.novicap.com/v1
+  tags:
+  - Dynamic Discounting
+  properties:
+  - type: OpenAPI
+    url: openapi/novicap-dynamic-discounting-api-openapi.yml
+  - type: APIReference
+    url: https://developer.novicap.com/
+  - type: Documentation
+    url: https://developer.novicap.com/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +81,44 @@ maintainers:
 common:
 - type: Website
   url: https://novicap.com/
+- type: DeveloperPortal
+  url: https://developer.novicap.com/
+- type: Blog
+  url: https://novicap.com/blog/
+- type: Login
+  url: https://app.novicap.com/users/sign_in
+- type: Support
+  url: mailto:support@novicap.com
+- type: TermsOfService
+  url: https://novicap.com/aviso-legal/
+- type: Authentication
+  url: authentication/novicap-authentication.yml
+- type: Conventions
+  url: conventions/novicap-conventions.yml
+- type: ErrorCatalog
+  url: errors/novicap-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/novicap-lifecycle.yml
+- type: DataModel
+  url: data-model/novicap-data-model.yml
+- type: Conformance
+  url: conformance/novicap-conformance.yml
+- type: MCPServer
+  url: mcp/novicap-mcp.yml
+- type: LLMsTxt
+  url: llms/novicap-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: WellKnown
+  url: well-known/novicap-well-known.yml
+- type: SecurityTxt
+  url: well-known/novicap-security.txt
+- type: VulnerabilityDisclosure
+  url: security/novicap-vulnerability-disclosure.yml
+- type: Security
+  url: https://novicap.com/.well-known/security.txt
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

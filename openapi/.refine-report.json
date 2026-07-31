@@ -1,0 +1,16 @@
+{
+  "provider": "novicap",
+  "sources": [
+    "novicap-confirming-standard-api-openapi.yml",
+    "novicap-dynamic-discounting-api-openapi.yml"
+  ],
+  "outputs": [
+    "novicap-confirming-standard-api-openapi.yml",
+    "novicap-dynamic-discounting-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

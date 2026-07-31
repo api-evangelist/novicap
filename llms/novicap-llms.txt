@@ -1,0 +1,33 @@
+# Novicap
+
+> Novicap is a Spanish working-capital / supply-chain-finance fintech. Its API lets partners submit suppliers and invoices, create payment instructions and adjustments across two products — Dynamic Discounting and Confirming (reverse factoring / Confirming Standard). Backed by Partech and Techstars.
+
+## API
+- Base URL: https://api.novicap.com/v1
+- Auth: API key as `Authorization: Bearer {api_key}` (or `api_key` in the JSON body); OAuth 2.0 on request. A `product_id` is required on every request.
+- Format: JSON request and response bodies.
+- Versioning: URI path (`/v1`).
+
+## Products & operations
+- Dynamic Discounting: add/retrieve suppliers; add/retrieve/delete invoices; create/retrieve payment instructions; create/retrieve/delete payment adjustments.
+- Confirming Standard: add/retrieve/delete invoices; retrieve payment instructions.
+
+## Docs
+- API Reference: https://developer.novicap.com/
+- Website: https://novicap.com/
+- App / sign in: https://app.novicap.com/users/sign_in
+- Blog: https://novicap.com/blog/
+- Legal notice (aviso legal): https://novicap.com/aviso-legal/
+- Contact: https://novicap.com/contacto/
+- Security contact: security@novicap.com (https://novicap.com/.well-known/security.txt)
+- Support: support@novicap.com
+
+## Repo artifacts (API Evangelist)
+- OpenAPI (generated from docs): openapi/novicap-openapi.yml
+- Authentication: authentication/novicap-authentication.yml
+- Conventions: conventions/novicap-conventions.yml
+- Errors: errors/novicap-problem-types.yml
+- Lifecycle: lifecycle/novicap-lifecycle.yml
+- Data model: data-model/novicap-data-model.yml
+- MCP (candidate): mcp/novicap-mcp.yml
+- Well-known / security.txt: well-known/novicap-well-known.yml

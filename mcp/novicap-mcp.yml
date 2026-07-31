@@ -1,0 +1,55 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/novicap-openapi.yml
+server:
+  name: novicap
+  transport: http
+  url: null
+notes: >-
+  No official/hosted Novicap MCP server was found. This is a candidate tool list
+  derived one-to-one from the documented API operations to seed a future MCP
+  server. All tools require a product_id and a Bearer API key.
+tools:
+  - name: add_dynamic_discounting_suppliers
+    description: Add dynamic discounting suppliers.
+    source_operation: openapi/novicap-openapi.yml#addDynamicDiscountingSuppliers
+  - name: retrieve_dynamic_discounting_suppliers
+    description: Retrieve dynamic discounting suppliers.
+    source_operation: openapi/novicap-openapi.yml#retrieveDynamicDiscountingSuppliers
+  - name: add_dynamic_discounting_invoices
+    description: Add dynamic discounting invoices.
+    source_operation: openapi/novicap-openapi.yml#addDynamicDiscountingInvoices
+  - name: retrieve_dynamic_discounting_invoices
+    description: Retrieve dynamic discounting invoices.
+    source_operation: openapi/novicap-openapi.yml#retrieveDynamicDiscountingInvoices
+  - name: delete_dynamic_discounting_invoice
+    description: Delete a dynamic discounting invoice by transaction id.
+    source_operation: openapi/novicap-openapi.yml#deleteDynamicDiscountingInvoice
+  - name: create_dynamic_discounting_payment_instruction
+    description: Create a dynamic discounting payment instruction.
+    source_operation: openapi/novicap-openapi.yml#createDynamicDiscountingPaymentInstruction
+  - name: retrieve_dynamic_discounting_payment_instructions
+    description: Retrieve dynamic discounting payment instructions.
+    source_operation: openapi/novicap-openapi.yml#retrieveDynamicDiscountingPaymentInstructions
+  - name: create_dynamic_discounting_payment_adjustment
+    description: Create a dynamic discounting payment adjustment.
+    source_operation: openapi/novicap-openapi.yml#createDynamicDiscountingPaymentAdjustment
+  - name: retrieve_dynamic_discounting_payment_adjustments
+    description: Retrieve dynamic discounting payment adjustments.
+    source_operation: openapi/novicap-openapi.yml#retrieveDynamicDiscountingPaymentAdjustments
+  - name: delete_dynamic_discounting_payment_adjustment
+    description: Delete a dynamic discounting payment adjustment by transaction id.
+    source_operation: openapi/novicap-openapi.yml#deleteDynamicDiscountingPaymentAdjustment
+  - name: add_confirming_invoices
+    description: Add confirming invoices.
+    source_operation: openapi/novicap-openapi.yml#addConfirmingInvoices
+  - name: retrieve_confirming_invoices
+    description: Retrieve confirming invoices.
+    source_operation: openapi/novicap-openapi.yml#retrieveConfirmingInvoices
+  - name: delete_confirming_invoice
+    description: Delete a confirming invoice by transaction id.
+    source_operation: openapi/novicap-openapi.yml#deleteConfirmingInvoice
+  - name: retrieve_confirming_payment_instructions
+    description: Retrieve confirming payment instructions.
+    source_operation: openapi/novicap-openapi.yml#retrieveConfirmingPaymentInstructions

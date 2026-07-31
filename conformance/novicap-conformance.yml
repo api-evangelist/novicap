@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/novicap-openapi.yml
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: OAuth 2.0 is documented as "available on request" but not the default; no flows/scopes published.
+  - id: rest-json
+    conforms: true
+    evidence: JSON request/response over HTTP with resource-oriented paths.
+  - id: uri-path-versioning
+    conforms: true
+    evidence: All operations served under /v1/.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are HTTP status codes only; no application/problem+json envelope.
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: well-known/novicap-security.txt published at novicap.com and developer.novicap.com.
+  - id: pagination
+    conforms: false
+    evidence: No pagination documented.
+  - id: idempotency-key
+    conforms: false
+    evidence: No Idempotency-Key header; only (supplier, reference) dedup-on-update behavior.

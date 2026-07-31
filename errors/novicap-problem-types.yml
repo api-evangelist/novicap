@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.novicap.com/#errors
+format: http-status
+notes: >-
+  Novicap documents error handling as HTTP status codes only; no
+  application/problem+json envelope or machine-readable error type registry is
+  published. Titles/remediation below are from the docs error section.
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: The request was malformed or contained invalid parameters.
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or invalid API key.
+    remediation: Generate an API key from your Novicap user profile and send it as a Bearer token.
+  - status: 403
+    title: Forbidden
+    meaning: The endpoint is not enabled for your account configuration.
+    remediation: Contact support@novicap.com to request access to the endpoint.
+  - status: 404
+    title: Not Found
+    meaning: The referenced resource does not exist.
+  - status: 500
+    title: Internal Server Error
+    meaning: An unexpected error occurred on the Novicap side.
+  - status: 502
+    title: Bad Gateway
+  - status: 503
+    title: Service Unavailable
+  - status: 504
+    title: Gateway Timeout
