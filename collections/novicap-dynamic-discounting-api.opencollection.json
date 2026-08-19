@@ -1,0 +1,242 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Novicap Confirming Standard Dynamic Discounting API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dynamic Discounting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve dynamic discounting suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/suppliers",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ]
+          },
+          "docs": "Retrieve dynamic discounting suppliers"
+        },
+        {
+          "info": {
+            "name": "Add dynamic discounting suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/suppliers",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add dynamic discounting suppliers"
+        },
+        {
+          "info": {
+            "name": "Retrieve dynamic discounting invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/invoices",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ]
+          },
+          "docs": "Retrieve dynamic discounting invoices"
+        },
+        {
+          "info": {
+            "name": "Add dynamic discounting invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/invoices",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invoices with a matching supplier and reference that are not yet part of a payment instruction are updated rather than duplicated."
+        },
+        {
+          "info": {
+            "name": "Delete a dynamic discounting invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/invoices/:transaction_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path",
+                "description": "Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD)."
+              }
+            ]
+          },
+          "docs": "Delete a dynamic discounting invoice"
+        },
+        {
+          "info": {
+            "name": "Retrieve dynamic discounting payment instructions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/payment_instructions",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ]
+          },
+          "docs": "Retrieve dynamic discounting payment instructions"
+        },
+        {
+          "info": {
+            "name": "Create a dynamic discounting payment instruction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/payment_instructions",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a dynamic discounting payment instruction"
+        },
+        {
+          "info": {
+            "name": "Retrieve dynamic discounting payment adjustments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/payment_adjustments",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ]
+          },
+          "docs": "Retrieve dynamic discounting payment adjustments"
+        },
+        {
+          "info": {
+            "name": "Create a dynamic discounting payment adjustment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/payment_adjustments",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a dynamic discounting payment adjustment"
+        },
+        {
+          "info": {
+            "name": "Delete a dynamic discounting payment adjustment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.novicap.com/v1/dynamic_discounting/payment_adjustments/:transaction_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path",
+                "description": "Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD)."
+              }
+            ]
+          },
+          "docs": "Delete a dynamic discounting payment adjustment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

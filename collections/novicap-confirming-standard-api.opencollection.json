@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Novicap Confirming Standard API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Confirming Standard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve confirming invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.novicap.com/v1/confirming_standard/invoices",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ]
+          },
+          "docs": "Retrieve confirming invoices"
+        },
+        {
+          "info": {
+            "name": "Add confirming invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.novicap.com/v1/confirming_standard/invoices",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add confirming invoices"
+        },
+        {
+          "info": {
+            "name": "Delete a confirming invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.novicap.com/v1/confirming_standard/invoices/:transaction_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path",
+                "description": "Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD)."
+              }
+            ]
+          },
+          "docs": "Delete a confirming invoice"
+        },
+        {
+          "info": {
+            "name": "Retrieve confirming payment instructions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.novicap.com/v1/confirming_standard/payment_instructions",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Novicap product the request operates against."
+              }
+            ]
+          },
+          "docs": "Retrieve confirming payment instructions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
