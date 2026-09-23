@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Novicap Confirming Standard Dynamic Discounting API
+  title: Novicap Dynamic Discounting API
   version: v1
   description: Novicap working-capital API. Transcribed faithfully from the published API Reference at https://developer.novicap.com/ (operations, paths, methods, parameters, auth scheme and documented HTTP error codes). Request/response property schemas are only partially documented by the provider; bodies are modelled as open objects and MUST NOT be treated as an authoritative field contract. Provider does not publish an OpenAPI document; this is an API Evangelist generation from the public docs.
   contact:
@@ -231,8 +231,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
-    Forbidden:
-      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     Created:
       description: Resource created (application/json).
       content:
@@ -240,6 +238,8 @@ components:
           schema:
             type: object
             additionalProperties: true
+    BadRequest:
+      description: Bad Request — the request was malformed or invalid.
     Unauthorized:
       description: Unauthorized — missing or invalid API key.
     Success:
@@ -249,28 +249,17 @@ components:
           schema:
             type: object
             additionalProperties: true
-    ServerError:
-      description: Server error (500 / 502 / 503 / 504).
-    BadRequest:
-      description: Bad Request — the request was malformed or invalid.
+    Forbidden:
+      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     NotFound:
       description: Not Found — the referenced resource does not exist.
-  parameters:
-    TransactionId:
-      name: transaction_id
-      in: path
-      required: true
-      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
-      schema:
-        type: string
-    ProductId:
-      name: product_id
-      in: query
-      required: true
-      description: Identifier of the Novicap product the request operates against.
-      schema:
-        type: integer
+    ServerError:
+      description: Server error (500 / 502 / 503 / 504).
   schemas:
+    PaymentInstructionInput:
+      type: object
+      description: Payment instruction payload. Field contract is only partially documented.
+      additionalProperties: true
     InvoiceInput:
       type: object
       description: Invoice payload. Documented deduplication key is (supplier, reference). Remaining fields are only partially documented by the provider.
@@ -290,10 +279,21 @@ components:
       type: object
       description: Payment adjustment payload. Field contract is only partially documented.
       additionalProperties: true
-    PaymentInstructionInput:
-      type: object
-      description: Payment instruction payload. Field contract is only partially documented.
-      additionalProperties: true
+  parameters:
+    ProductId:
+      name: product_id
+      in: query
+      required: true
+      description: Identifier of the Novicap product the request operates against.
+      schema:
+        type: integer
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
+      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

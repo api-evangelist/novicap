@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Novicap Confirming Standard API
   version: v1
@@ -98,8 +98,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
-    Forbidden:
-      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     Created:
       description: Resource created (application/json).
       content:
@@ -107,6 +105,8 @@ components:
           schema:
             type: object
             additionalProperties: true
+    BadRequest:
+      description: Bad Request — the request was malformed or invalid.
     Unauthorized:
       description: Unauthorized — missing or invalid API key.
     Success:
@@ -116,27 +116,12 @@ components:
           schema:
             type: object
             additionalProperties: true
-    ServerError:
-      description: Server error (500 / 502 / 503 / 504).
-    BadRequest:
-      description: Bad Request — the request was malformed or invalid.
+    Forbidden:
+      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     NotFound:
       description: Not Found — the referenced resource does not exist.
-  parameters:
-    TransactionId:
-      name: transaction_id
-      in: path
-      required: true
-      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
-      schema:
-        type: string
-    ProductId:
-      name: product_id
-      in: query
-      required: true
-      description: Identifier of the Novicap product the request operates against.
-      schema:
-        type: integer
+    ServerError:
+      description: Server error (500 / 502 / 503 / 504).
   schemas:
     InvoiceInput:
       type: object
@@ -149,6 +134,21 @@ components:
         reference:
           type: string
           description: Invoice reference used for deduplication.
+  parameters:
+    ProductId:
+      name: product_id
+      in: query
+      required: true
+      description: Identifier of the Novicap product the request operates against.
+      schema:
+        type: integer
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
+      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
