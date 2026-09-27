@@ -47,7 +47,7 @@ created: '2026-07-17'
 modified: '2026-07-20'
 tags:
 - Company
-- Financial-Services
+- Financial Services
 - Fintech
 - Working Capital
 - Invoice Finance
@@ -67,6 +67,7 @@ tags_raw:
 - Confirming
 - Reverse Factoring
 - Spain
+- Financial-Services
 apis:
 - aid: novicap:novicap-confirming-standard-api
   name: Novicap Confirming Standard API

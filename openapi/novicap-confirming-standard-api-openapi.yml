@@ -98,17 +98,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
-    Created:
-      description: Resource created (application/json).
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
-    BadRequest:
-      description: Bad Request — the request was malformed or invalid.
-    Unauthorized:
-      description: Unauthorized — missing or invalid API key.
+    NotFound:
+      description: Not Found — the referenced resource does not exist.
     Success:
       description: Successful response (application/json).
       content:
@@ -118,10 +109,34 @@ components:
             additionalProperties: true
     Forbidden:
       description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
-    NotFound:
-      description: Not Found — the referenced resource does not exist.
+    Unauthorized:
+      description: Unauthorized — missing or invalid API key.
+    BadRequest:
+      description: Bad Request — the request was malformed or invalid.
     ServerError:
       description: Server error (500 / 502 / 503 / 504).
+    Created:
+      description: Resource created (application/json).
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+  parameters:
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
+      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
+      schema:
+        type: string
+    ProductId:
+      name: product_id
+      in: query
+      required: true
+      description: Identifier of the Novicap product the request operates against.
+      schema:
+        type: integer
   schemas:
     InvoiceInput:
       type: object
@@ -134,21 +149,6 @@ components:
         reference:
           type: string
           description: Invoice reference used for deduplication.
-  parameters:
-    ProductId:
-      name: product_id
-      in: query
-      required: true
-      description: Identifier of the Novicap product the request operates against.
-      schema:
-        type: integer
-    TransactionId:
-      name: transaction_id
-      in: path
-      required: true
-      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
