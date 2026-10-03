@@ -97,39 +97,7 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
-  responses:
-    NotFound:
-      description: Not Found — the referenced resource does not exist.
-    Success:
-      description: Successful response (application/json).
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
-    Forbidden:
-      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
-    Unauthorized:
-      description: Unauthorized — missing or invalid API key.
-    BadRequest:
-      description: Bad Request — the request was malformed or invalid.
-    ServerError:
-      description: Server error (500 / 502 / 503 / 504).
-    Created:
-      description: Resource created (application/json).
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   parameters:
-    TransactionId:
-      name: transaction_id
-      in: path
-      required: true
-      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
-      schema:
-        type: string
     ProductId:
       name: product_id
       in: query
@@ -137,6 +105,13 @@ components:
       description: Identifier of the Novicap product the request operates against.
       schema:
         type: integer
+    TransactionId:
+      name: transaction_id
+      in: path
+      required: true
+      description: Transaction identifier of the resource (e.g. DDI-ABCD, I-ABCD).
+      schema:
+        type: string
   schemas:
     InvoiceInput:
       type: object
@@ -149,6 +124,31 @@ components:
         reference:
           type: string
           description: Invoice reference used for deduplication.
+  responses:
+    Created:
+      description: Resource created (application/json).
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    BadRequest:
+      description: Bad Request — the request was malformed or invalid.
+    NotFound:
+      description: Not Found — the referenced resource does not exist.
+    Unauthorized:
+      description: Unauthorized — missing or invalid API key.
+    Success:
+      description: Successful response (application/json).
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    Forbidden:
+      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
+    ServerError:
+      description: Server error (500 / 502 / 503 / 504).
   securitySchemes:
     bearerAuth:
       type: http
