@@ -44,7 +44,7 @@ x-tier: enriched
 x-tier-reason: portfolio-lead-with-public-api
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-10-06'
 tags:
 - Company
 - Financial Services
@@ -103,6 +103,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://novicap.com/feed/
+  type: BlogRSS
 - type: Overlay
   url: overlays/novicap-overlay.yaml
 - type: Website
