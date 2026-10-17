@@ -255,25 +255,25 @@ components:
       description: Supplier payload. Field contract is only partially documented by the provider.
       additionalProperties: true
   responses:
+    Forbidden:
+      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     ServerError:
       description: Server error (500 / 502 / 503 / 504).
-    NotFound:
-      description: Not Found — the referenced resource does not exist.
-    Unauthorized:
-      description: Unauthorized — missing or invalid API key.
-    Success:
-      description: Successful response (application/json).
+    Created:
+      description: Resource created (application/json).
       content:
         application/json:
           schema:
             type: object
             additionalProperties: true
-    Forbidden:
-      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     BadRequest:
       description: Bad Request — the request was malformed or invalid.
-    Created:
-      description: Resource created (application/json).
+    Unauthorized:
+      description: Unauthorized — missing or invalid API key.
+    NotFound:
+      description: Not Found — the referenced resource does not exist.
+    Success:
+      description: Successful response (application/json).
       content:
         application/json:
           schema:

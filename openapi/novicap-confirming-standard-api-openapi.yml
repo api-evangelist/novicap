@@ -98,19 +98,10 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
+    Forbidden:
+      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     ServerError:
       description: Server error (500 / 502 / 503 / 504).
-    NotFound:
-      description: Not Found — the referenced resource does not exist.
-    Unauthorized:
-      description: Unauthorized — missing or invalid API key.
-    Success:
-      description: Successful response (application/json).
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
     Created:
       description: Resource created (application/json).
       content:
@@ -118,10 +109,31 @@ components:
           schema:
             type: object
             additionalProperties: true
-    Forbidden:
-      description: Forbidden — the endpoint is not enabled for this account. Contact support@novicap.com to request access.
     BadRequest:
       description: Bad Request — the request was malformed or invalid.
+    Unauthorized:
+      description: Unauthorized — missing or invalid API key.
+    NotFound:
+      description: Not Found — the referenced resource does not exist.
+    Success:
+      description: Successful response (application/json).
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+  schemas:
+    InvoiceInput:
+      type: object
+      description: Invoice payload. Documented deduplication key is (supplier, reference). Remaining fields are only partially documented by the provider.
+      additionalProperties: true
+      properties:
+        supplier:
+          type: string
+          description: Supplier reference the invoice belongs to.
+        reference:
+          type: string
+          description: Invoice reference used for deduplication.
   parameters:
     TransactionId:
       name: transaction_id
@@ -137,18 +149,6 @@ components:
       description: Identifier of the Novicap product the request operates against.
       schema:
         type: integer
-  schemas:
-    InvoiceInput:
-      type: object
-      description: Invoice payload. Documented deduplication key is (supplier, reference). Remaining fields are only partially documented by the provider.
-      additionalProperties: true
-      properties:
-        supplier:
-          type: string
-          description: Supplier reference the invoice belongs to.
-        reference:
-          type: string
-          description: Invoice reference used for deduplication.
   securitySchemes:
     bearerAuth:
       type: http
